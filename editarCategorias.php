@@ -8,6 +8,7 @@ require_once("config.php");
 
 //traemos el id de la instancia a editar
 $id = $_GET['id'];
+
 $data = new Config();
 $data->setId($id);
 
@@ -18,10 +19,12 @@ $val = $record[0];
 
 if(isset($_POST['editar'])){
 
-    $category->setNombre($_POST['nombre']);
-    $category->setDescripcion($_POST['descripcion']);
-    $category->setImagen($_POST['imagen']);
+    $data->setNombre($_POST['nombre']);
+    $data->setDescripcion($_POST['descripcion']);
+    $data->setImagen($_POST['imagen']);
 
+    $data->update();
+    echo "<script>alert('Datos actualizados satisfactoriamente');document.location='categorias.php';</script>";
 
 }
 

@@ -212,6 +212,15 @@ body{
   
 }
 
+.table-img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+
+
 /* ////////////////////////////   STYLOS PARTE IZQUIERADA //////////////////////////////// */
 .parte-izquierda {
   background-color: #faeded;
@@ -233,13 +242,6 @@ body{
 
 }
 
-
-.datos img {
-  width: 150px;
-  height: 180px;
-  border-radius: 15px;
-  object-fit: cover;
-}
 
 
 
