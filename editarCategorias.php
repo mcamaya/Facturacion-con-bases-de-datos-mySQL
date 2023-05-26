@@ -5,17 +5,22 @@ ini_set("display_startup_errors", 1);
 
 error_reporting(E_ALL);
 require_once("config.php");
+
+//traemos el id de la instancia a editar
+$id = $_GET['id'];
 $data = new Config();
+$data->setId($id);
 
+//traemos la instancia y la guardamos en $value
+$record = $data->obtainOne();
+$val = $record[0];
 
-$data->obtainOne();
-$category = $data[0];
 
 if(isset($_POST['editar'])){
 
-    $data->setNombre($_POST['nombre']);
-    $data->setDescripcion($_POST['descripcion']);
-    $data->setImagen($_POST['imagen']);
+    $category->setNombre($_POST['nombre']);
+    $category->setDescripcion($_POST['descripcion']);
+    $category->setImagen($_POST['imagen']);
 
 
 }
@@ -51,7 +56,7 @@ if(isset($_POST['editar'])){
 
       <div class="perfil">
         <h3 style="margin-bottom: 2rem;">Camp Skiler.</h3>
-        <img src="images/Diseño sin título.png" alt="" class="imagenPerfil">
+        <img src="css/avatar.png" alt="" class="imagenPerfil">
         <h3 >Maicol Estrada</h3>
       </div>
       <div class="menus">
@@ -77,7 +82,7 @@ if(isset($_POST['editar'])){
                   id="nombre"
                   name="nombre"
                   class="form-control"  
-                 
+                  value="<?=$val['nombre']?>"
                 />
               </div>
 
@@ -88,8 +93,7 @@ if(isset($_POST['editar'])){
                   id="descripcion"
                   name="descripcion"
                   class="form-control"  
-                  
-                 
+                  value="<?=$val['descripcion']?>"                 
                 />
               </div>
 
@@ -100,8 +104,7 @@ if(isset($_POST['editar'])){
                   id="imagen"
                   name="imagen"
                   class="form-control"  
-                  
-                  
+                  value="<?=$val['imagen']?>"
                 />
               </div>
 

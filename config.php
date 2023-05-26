@@ -80,6 +80,7 @@ class Config {
         try {
             $stm = $this->dbCnx->prepare("SELECT * FROM categorias WHERE id = ?");
             $stm->execute([$this->id]);
+            return $stm -> fetchAll();
         } catch (Exception $e) {
             return $e->getMessage();
         }

@@ -65,6 +65,7 @@ $allCategories = $data->obtainAll();
               <th scope="col">DESCRIPCIÓN</th>
               <th scope="col">IMAGEN</th>
               <th scope="col">BORRAR</th>
+              <th scope="col">EDITAR</th>
             </tr>
           </thead>
           <tbody class="" id="tabla">
