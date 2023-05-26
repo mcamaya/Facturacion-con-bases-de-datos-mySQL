@@ -1,3 +1,11 @@
+<?php
+
+require_once("config.php");
+$data = new Config();
+$allCategories = $data->obtainAll();
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -59,10 +67,23 @@
             </tr>
           </thead>
           <tbody class="" id="tabla">
+            
+            <?php
+            foreach ($allCategories as $key => $category) {
+              
+            ?>
 
             <!-- ///////Llenado Dinamico desde la Base de Datos -->
+            <tr>
+              <td><?=$category['id']?></td>
+              <td><?=$category['nombre']?></td>
+              <td><?=$category['descripcion']?></td>
+              <td><?=$category['imagen']?></td>
+            </tr>
          
-       
+            <?php
+            }
+            ?>
 
           </tbody>
         
