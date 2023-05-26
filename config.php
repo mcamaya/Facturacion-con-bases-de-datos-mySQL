@@ -75,4 +75,21 @@ class Config {
             return $e->getMessage();
         }
     }
+
+    public function obtainOne(){
+        try {
+            $stm = $this->dbCnx->prepare("SELECT * FROM categorias WHERE id = ?");
+            $stm->execute([$this->id]);
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public function update(){
+        try {
+            $stm = $this->dbCnx->prepare("UPDATE categorias SET ");
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+    }
 }
