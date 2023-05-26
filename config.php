@@ -54,4 +54,15 @@ class Config {
             return $e->getMessage();
         }
     }
+
+
+    public function obtainAll(){
+        try {
+            $stm = $this->dbCnx->prepare("SELECT * FROM categorias");
+            $stm->execute();
+            return $stm->fetchAll();
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
 }
