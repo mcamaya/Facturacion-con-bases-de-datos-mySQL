@@ -65,4 +65,14 @@ class Config {
             return $e->getMessage();
         }
     }
+
+    public function delete(){
+        try {
+            $stm = $this->dbCnx->prepare("DELETE FROM categorias WHERE id = ?");
+            $stm -> execute([$this->id]);
+            return $stm->fetchAll();
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
 }

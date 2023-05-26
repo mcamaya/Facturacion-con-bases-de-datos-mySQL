@@ -64,6 +64,7 @@ $allCategories = $data->obtainAll();
               <th scope="col">NOMBRE</th>
               <th scope="col">DESCRIPCIÓN</th>
               <th scope="col">IMAGEN</th>
+              <th scope="col">BORRAR</th>
             </tr>
           </thead>
           <tbody class="" id="tabla">
@@ -79,6 +80,7 @@ $allCategories = $data->obtainAll();
               <td><?=$category['nombre']?></td>
               <td><?=$category['descripcion']?></td>
               <td><?=$category['imagen']?></td>
+              <td><a class="btn btn-danger" href="eliminarCategorias.php?id=<?=$category['id']?>&req=delete">Borrar</a></td>
             </tr>
          
             <?php
