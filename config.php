@@ -1,5 +1,5 @@
 <?php
-
+require("db.php");
 class Config {
     private $id;
     private $nombre;
@@ -13,6 +13,8 @@ class Config {
         $this->nombre = $nombre;
         $this->descripcion = $descripcion;
         $this->imagen = $imagen;
+
+        $this->dbCnx = new PDO(DB_TYPE.":host=".DB_HOST.";dbname=".DB_NAME, DB_USER, DB_PWD, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
     }
 
     public function getId(){
@@ -36,10 +38,20 @@ class Config {
         $this->descripcion = $newDescripcion;
     }
 
-    public function getImage(){
+    public function getImagen(){
         return $this->image;
     }
-    public function setimage($newImage){
-        $this->image = $newImage;
+    public function setimagen($newImagen){
+        $this->imagen = $newImagen;
+    }
+
+
+    public function insertData(){
+        try {
+            $stm = $this->dbCnx->prepare("INSERT INTO categorias (nombre, descripcion, imagen) values(?,?,?)");
+            $stm -> execute([$this->nombre, $this->descripcion, $this->imagen]);
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
     }
 }

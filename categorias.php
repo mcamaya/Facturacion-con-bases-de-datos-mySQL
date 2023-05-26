@@ -24,7 +24,7 @@
     <div class="parte-izquierda">
 
       <div class="perfil">
-        <h3 style="margin-bottom: 2rem;">Camper Skills.</h3>
+        <h3 style="margin-bottom: 2rem;">Sistema de Facturación</h3>
         <img src="css/avatar.png" alt="" class="imagenPerfil">
         <h3>Pepito Pérez</h3>
       </div>
@@ -35,7 +35,7 @@
         </a>
         <a href="estudiantes.php" style="display: flex;gap:1px;">
           <i class="bi bi-people"></i>
-          <h3 style="margin: 0px;font-weight: 800;">Estudiantes</h3>
+          <h3 style="margin: 0px;font-weight: 800;">Categorías</h3>
         </a>
        
 
@@ -45,7 +45,7 @@
 
     <div class="parte-media">
       <div style="display: flex; justify-content: space-between;">
-        <h2>Estudiantes</h2>
+        <h2>Categorías</h2>
         <button class="btn-m" data-bs-toggle="modal" data-bs-target="#registrarEstudiantes"><i class="bi bi-person-add " style="color: rgb(255, 255, 255);" ></i></button>
       </div>
       <div class="menuTabla contenedor2">
@@ -53,15 +53,14 @@
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">NOMBREs</th>
-              <th scope="col">DIRECCION</th>
-              <th scope="col">LOGROS</th>
-              <th scope="col">DETALLE</th>
+              <th scope="col">NOMBRE</th>
+              <th scope="col">DESCRIPCIÓN</th>
+              <th scope="col">IMAGEN</th>
             </tr>
           </thead>
           <tbody class="" id="tabla">
 
-            <!-- ///////Llenado DInamico desde la Base de Datos -->
+            <!-- ///////Llenado Dinamico desde la Base de Datos -->
          
        
 
@@ -75,7 +74,7 @@
     </div>
 
     <div class="parte-derecho " id="detalles">
-      <h3>Detalle Estudiantes</h3>
+      <h3>Detalle Categorías</h3>
       <p>Cargando...</p>
        <!-- ///////Generando la grafica -->
 
@@ -94,40 +93,42 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body" style="background-color: rgb(231, 253, 246);">
-            <form class="col d-flex flex-wrap" method="post">
+            <form action="registrarCategorias.php" class="col d-flex flex-wrap" method="post">
               <div class="mb-1 col-12">
-                <label for="nombres" class="form-label">Nombres</label>
+                <label for="nombre" class="form-label">Nombre Categoría</label>
                 <input 
                   type="text"
-                  id="nombres"
-                  name="nombres"
-                  class="form-control"  
+                  id="nombre"
+                  name="nombre"
+                  class="form-control"
+                  required  
                 />
               </div>
 
               <div class="mb-1 col-12">
-                <label for="direccion" class="form-label">Direccion</label>
+                <label for="descripcion" class="form-label">Descripción</label>
                 <input 
                   type="text"
-                  id="direccion"
-                  name="direccion"
-                  class="form-control"  
+                  id="descripcion"
+                  name="descripcion"
+                  class="form-control"
+                  required  
                 />
               </div>
 
               <div class="mb-1 col-12">
-                <label for="logros" class="form-label">Logros</label>
+                <label for="imagen" class="form-label">Imagen</label>
                 <input 
                   type="text"
-                  id="logros"
-                  name="logros"
+                  id="imagen"
+                  name="imagen"
                   class="form-control"  
-                 
+                  required
                 />
               </div>
 
               <div class=" col-12 m-2">
-                <input type="submit" class="btn btn-primary" value="guardar" name="guardar"/>
+                <input type="submit" class="btn btn-primary" value="guardar" name="guardarDatos"/>
               </div>
             </form>  
          </div>       
