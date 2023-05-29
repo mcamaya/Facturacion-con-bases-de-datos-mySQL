@@ -1,3 +1,12 @@
+<?php
+
+require_once("config.php");
+$data = new Config();
+$allEmpleados = $data->obtainAll();
+
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -5,7 +14,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Clientes</title>
+  <title>Empleados</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&display=swap" rel="stylesheet">
@@ -45,7 +54,6 @@
           <i class="bi bi-people"></i>
           <h3 style="margin: 0px;font-weight: 800;">Empleados</h3>
         </a>
-       
 
 
       </div>
@@ -53,7 +61,7 @@
 
     <div class="parte-media">
       <div style="display: flex; justify-content: space-between;">
-        <h2>Estudiantes</h2>
+        <h2>Empleados</h2>
         <button class="btn-m" data-bs-toggle="modal" data-bs-target="#registrarEstudiantes"><i class="bi bi-person-add " style="color: rgb(255, 255, 255);" ></i></button>
       </div>
       <div class="menuTabla contenedor2">
@@ -61,17 +69,30 @@
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">NOMBREs</th>
+              <th scope="col">NOMBRE</th>
+              <th scope="col">CELULAR</th>
               <th scope="col">DIRECCION</th>
-              <th scope="col">LOGROS</th>
-              <th scope="col">DETALLE</th>
+              <th scope="col">IMAGEN</th>
             </tr>
           </thead>
           <tbody class="" id="tabla">
 
+            <?php
+            foreach ($allEmpleados as $key => $empleado) {
+            ?>
             <!-- ///////Llenado DInamico desde la Base de Datos -->
-         
-       
+            <tr>
+              <td><?=$empleado['id'];?></td>
+              <td><?=$empleado['nombre'];?></td>
+              <td><?=$empleado['celular'];?></td>
+              <td><?=$empleado['direccion'];?></td>
+              <td><img class="table-img" src="<?=$empleado['imagen'];?>" alt=""></td>
+              <td><a class="btn btn-warning" href=""></a></td>
+            </tr>
+            
+            <?php
+            }
+            ?>
 
           </tbody>
         
@@ -98,17 +119,28 @@
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" >
         <div class="modal-content" >
           <div class="modal-header" >
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Nuevo Estudiante</h1>
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Nuevo Empleado</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body" style="background-color: rgb(231, 253, 246);">
-            <form class="col d-flex flex-wrap" method="post">
+            <form class="col d-flex flex-wrap" action="agregarEmpleados.php" method="post">
               <div class="mb-1 col-12">
-                <label for="nombres" class="form-label">Nombres</label>
+                <label for="nombre" class="form-label">Nombre</label>
                 <input 
                   type="text"
-                  id="nombres"
-                  name="nombres"
+                  id="nombre"
+                  name="nombre"
+                  class="form-control"
+                  required  
+                />
+              </div>
+
+              <div class="mb-1 col-12">
+                <label for="celular" class="form-label">Celular</label>
+                <input 
+                  type="number"
+                  id="celular"
+                  name="celular"
                   class="form-control"
                   required  
                 />
@@ -126,11 +158,11 @@
               </div>
 
               <div class="mb-1 col-12">
-                <label for="logros" class="form-label">Logros</label>
+                <label for="imagen" class="form-label">Imagen URL</label>
                 <input 
                   type="text"
-                  id="logros"
-                  name="logros"
+                  id="imagen"
+                  name="imagen"
                   class="form-control"
                   required  
                  
