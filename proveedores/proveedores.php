@@ -81,7 +81,7 @@ $record = $data->obtainAll();
 
     <div class="parte-media">
       <div style="display: flex; justify-content: space-between;">
-        <h2>Estudiantes</h2>
+        <h2>Proveedores</h2>
         <button class="btn-m" data-bs-toggle="modal" data-bs-target="#registrarEstudiantes"><i class="bi bi-person-add " style="color: rgb(255, 255, 255);" ></i></button>
       </div>
       <div class="menuTabla contenedor2">
@@ -92,6 +92,8 @@ $record = $data->obtainAll();
               <th scope="col">NOMBRE</th>
               <th scope="col">TELEFONO</th>
               <th scope="col">CIUDAD</th>
+              <th scope="col">EDITAR</th>
+              <th scope="col">BORRAR</th>
             </tr>
           </thead>
           <tbody class="" id="tabla">
@@ -106,6 +108,8 @@ $record = $data->obtainAll();
             <td><?=$proveedor['nombre']?></td>
             <td><?=$proveedor['telefono']?></td>
             <td><?=$proveedor['ciudad']?></td>
+            <td><a href="editarProveedores.php?id=<?=$proveedor['id']?>" class="btn btn-warning">Editar</a></td>
+            <td><a href="borrarProveedores.php?id=<?=$proveedor['id']?>&req=delete" class="btn btn-danger">Borrar</a></td>
           </tr>
 
           <?php
@@ -137,7 +141,7 @@ $record = $data->obtainAll();
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" >
         <div class="modal-content" >
           <div class="modal-header" >
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Nuevo Estudiante</h1>
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Nuevo Proveedor</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body" style="background-color: rgb(231, 253, 246);">

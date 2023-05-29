@@ -61,4 +61,34 @@ class Proveedor extends Conectar{
             return $e->getMessage();
         }
     }
+
+    public function delete(){
+        try {
+            $stm = $this->dbCnx->prepare("DELETE FROM proveedores WHERE id = ?");
+            $stm -> execute([$this->id]);
+            return $stm->fetchAll();
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public function obtainOne(){
+        try {
+            $stm = $this->dbCnx->prepare("SELECT * FROM proveedores WHERE id = ?");
+            $stm->execute([$this->id]);
+            return $stm -> fetchAll();
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public function update(){
+        try {
+            $stm = $this->dbCnx->prepare("UPDATE proveedores SET nombre = ?, telefono = ?, ciudad = ? WHERE id = ?");
+            $stm -> execute([$this->nombre, $this->telefono, $this->ciudad, $this->id]);
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
 }

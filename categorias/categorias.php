@@ -107,7 +107,7 @@ $allCategories = $data->obtainAll();
               <td><?=$category['id']?></td>
               <td><?=$category['nombre']?></td>
               <td><?=$category['descripcion']?></td>
-              <td><img class="table-img" src="<?=$category['imagen']?>" alt="img"></td>
+              <td><img class="table-img" src="<?=$category['imagen'];?>" alt="img"></td>
               <td><a class="btn btn-danger" href="eliminarCategorias.php?id=<?=$category['id']?>&req=delete">Borrar</a></td>
               <td><a class="btn btn-warning" href="editarCategorias.php?id=<?=$category['id']?>">Editar</a></td>
             </tr>

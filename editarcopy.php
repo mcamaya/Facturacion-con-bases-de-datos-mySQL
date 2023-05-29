@@ -29,7 +29,8 @@
         <h3 >Maicol Estrada</h3>
       </div>
       <div class="menus">
-      <a href="../home/home.php" style="display: flex;gap:2px;">
+
+        <a href="../home/home.php" style="display: flex;gap:2px;">
           <i class="bi bi-house-door"> </i>
           <h3 style="margin: 0px;">Home</h3>
         </a>
@@ -41,6 +42,27 @@
           <i class="bi bi-people"></i>
           <h3 style="margin: 0px;font-weight: 800;">Clientes</h3>
         </a>
+        <a href="../empleados/empleados.php" style="display: flex;gap:1px;">
+          <i class="bi bi-people"></i>
+          <h3 style="margin: 0px;font-weight: 800;">Empleados</h3>
+        </a>
+        <a href="../proveedores/proveedores.php" style="display: flex;gap:1px;">
+          <i class="bi bi-people"></i>
+          <h3 style="margin: 0px;font-weight: 800;">Proveedores</h3>
+        </a>
+        <a href="../productos/productos.php" style="display: flex;gap:1px;">
+          <i class="bi bi-people"></i>
+          <h3 style="margin: 0px;font-weight: 800;">Productos</h3>
+        </a>
+        <a href="../facturas/facturas.php" style="display: flex;gap:1px;">
+          <i class="bi bi-people"></i>
+          <h3 style="margin: 0px;font-weight: 800;">Facturas</h3>
+        </a>
+        <a href="../detailFactura/detailFactura.php" style="display: flex;gap:1px;">
+          <i class="bi bi-people"></i>
+          <h3 style="margin: 0px;font-weight: 800;">Factura Detalle</h3>
+        </a>
+
       </div>
     </div>
 
@@ -49,11 +71,11 @@
       <div class="menuTabla contenedor2">
       <form class="col d-flex flex-wrap" action=""  method="post">
               <div class="mb-1 col-12">
-                <label for="nombres" class="form-label">Nombres</label>
+                <label for="nombre" class="form-label">Nombre</label>
                 <input 
                   type="text"
-                  id="nombres"
-                  name="nombres"
+                  id="nombre"
+                  name="nombre"
                   class="form-control"  
                  required
                 />

@@ -1,3 +1,24 @@
+<?php
+
+require_once("conectProveedores.php");
+$id = $_GET['id'];
+$data = new Proveedor();
+$data->setId($id);
+
+$record = $data->obtainOne();
+$val = $record[0];
+
+if(isset($_POST['editar'])){
+    $data->setNombre($_POST['nombre']);
+    $data->setTelefono($_POST['telefono']);
+    $data->setCiudad($_POST['ciudad']);
+
+    $data->update();
+    echo "<script>alert('Datos actualizados satisfactoriamente');document.location='proveedores.php';</script>";
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -5,7 +26,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Clientes</title>
+  <title>Actualizar Estudiante</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&display=swap" rel="stylesheet">
@@ -24,9 +45,9 @@
     <div class="parte-izquierda">
 
       <div class="perfil">
-        <h3 style="margin-bottom: 2rem;">Sistema de Facturación</h3>
-        <img src="../css/avatar.png" alt="" class="imagenPerfil">
-        <h3>Maicol Estrada</h3>
+        <h3 style="margin-bottom: 2rem;">Facturación</h3>
+        <img src="images/Diseño sin título.png" alt="" class="imagenPerfil">
+        <h3 >Maicol Estrada</h3>
       </div>
       <div class="menus">
 
@@ -67,34 +88,51 @@
     </div>
 
     <div class="parte-media">
-      <div style="display: flex; justify-content: space-between;">
-        <h2>Estudiantes</h2>
-        <button class="btn-m" data-bs-toggle="modal" data-bs-target="#registrarEstudiantes"><i class="bi bi-person-add " style="color: rgb(255, 255, 255);" ></i></button>
-      </div>
+        <h2 class="m-2">Proveedor a Editar</h2>
       <div class="menuTabla contenedor2">
-        <table class="table table-custom ">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">NOMBREs</th>
-              <th scope="col">DIRECCION</th>
-              <th scope="col">LOGROS</th>
-              <th scope="col">DETALLE</th>
-            </tr>
-          </thead>
-          <tbody class="" id="tabla">
+      <form class="col d-flex flex-wrap" action=""  method="post">
+              <div class="mb-1 col-12">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input 
+                  type="text"
+                  id="nombre"
+                  name="nombre"
+                  class="form-control"
+                  value="<?=$val['nombre']?>"
+                 required
+                />
+              </div>
 
-            <!-- ///////Llenado DInamico desde la Base de Datos -->
-         
-       
+              <div class="mb-1 col-12">
+                <label for="telefono" class="form-label">Teléfono</label>
+                <input 
+                  type="number"
+                  id="telefono"
+                  name="telefono"
+                  class="form-control"  
+                  value="<?=$val['telefono']?>"
+                  required
+                />
+              </div>
 
-          </tbody>
-        
-        </table>
+              <div class="mb-1 col-12">
+                <label for="ciudad" class="form-label">Ciudad</label>
+                <input 
+                  type="text"
+                  id="ciudad"
+                  name="ciudad"
+                  class="form-control"
+                  value="<?=$val['ciudad']?>"
+                  required
+                />
+              </div>
 
+              <div class=" col-12 m-2">
+                <input type="submit" class="btn btn-primary" value="UPDATE" name="editar"/>
+              </div>
+            </form>  
+        <div id="charts1" class="charts"> </div>
       </div>
-
-
     </div>
 
     <div class="parte-derecho " id="detalles">
@@ -104,67 +142,14 @@
 
     </div>
 
+  </div>
 
 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+    crossorigin="anonymous"></script>
 
 
-    <!-- /////////Modal de registro de nuevo estuiante //////////-->
-    <div class="modal fade" id="registrarEstudiantes" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="backdrop-filter: blur(5px)">
-      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" >
-        <div class="modal-content" >
-          <div class="modal-header" >
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Nuevo Estudiante</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body" style="background-color: rgb(231, 253, 246);">
-            <form class="col d-flex flex-wrap" method="post">
-              <div class="mb-1 col-12">
-                <label for="nombre" class="form-label">Nombre</label>
-                <input 
-                  type="text"
-                  id="nombre"
-                  name="nombre"
-                  class="form-control"
-                  required  
-                />
-              </div>
-
-              <div class="mb-1 col-12">
-                <label for="direccion" class="form-label">Direccion</label>
-                <input 
-                  type="text"
-                  id="direccion"
-                  name="direccion"
-                  class="form-control"
-                  required  
-                />
-              </div>
-
-              <div class="mb-1 col-12">
-                <label for="logros" class="form-label">Logros</label>
-                <input 
-                  type="text"
-                  id="logros"
-                  name="logros"
-                  class="form-control"
-                  required  
-                 
-                />
-              </div>
-
-              <div class=" col-12 m-2">
-                <input type="submit" class="btn btn-primary" value="guardar" name="guardar"/>
-              </div>
-            </form>  
-         </div>       
-        </div>
-      </div>
-    </div>
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-      crossorigin="anonymous"></script>
 
 
 </body>
