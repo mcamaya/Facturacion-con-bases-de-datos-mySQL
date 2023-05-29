@@ -1,15 +1,13 @@
 <?php
 ini_set("display_errors", 1);
-
 ini_set("display_startup_errors", 1);
-
 error_reporting(E_ALL);
 
 
 if(isset($_POST['guardarDatos'])){
-    require_once("config.php");
+    require_once("conectCategorias.php");
 
-    $newCategory = new Config();
+    $newCategory = new Categoria();
     
     $newCategory->setNombre($_POST['nombre']);
     $newCategory->setDescripcion($_POST['descripcion']);

@@ -1,8 +1,8 @@
 <?php
-require_once("config.php");
+require_once("conectEmpleados.php");
 
 if(isset($_POST['guardar'])){
-    $data = new Config();
+    $data = new Empleado();
 
     $data->setNombre($_POST['nombre']);
     $data->setCelular($_POST['celular']);

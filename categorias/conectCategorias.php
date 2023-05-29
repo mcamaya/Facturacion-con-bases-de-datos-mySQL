@@ -1,20 +1,19 @@
 <?php
-require("../db.php");
-class Config {
+require_once("../config/conexion.php");
+
+class Categoria extends Conectar {
     private $id;
     private $nombre;
     private $descripcion;
     private $imagen;
 
-    protected $dbCnx; // conexión database
-
-    public function __construct($id= 0, $nombre = "", $descripcion = "", $imagen = ""){
+    public function __construct($id= 0, $nombre = "", $descripcion = "", $imagen = "", $dbCnx=""){
         $this->id = $id;
         $this->nombre = $nombre;
         $this->descripcion = $descripcion;
         $this->imagen = $imagen;
 
-        $this->dbCnx = new PDO(DB_TYPE.":host=".DB_HOST.";dbname=".DB_NAME, DB_USER, DB_PWD, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
+        parent::__construct($dbCnx);
     }
 
     public function getId(){

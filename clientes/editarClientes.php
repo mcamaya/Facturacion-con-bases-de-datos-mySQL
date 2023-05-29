@@ -1,14 +1,12 @@
 <?php
 ini_set("display_errors", 1);
-
 ini_set("display_startup_errors", 1);
-
 error_reporting(E_ALL);
 
-require_once("config.php");
+require_once("conectClientes.php");
 $id = $_GET['id'];
 
-$data = new Config();
+$data = new Cliente();
 $data->setId($id);
 
 $record = $data->obtainOne();
@@ -84,7 +82,7 @@ if(isset($_POST['editar'])){
                   id="nombre"
                   name="nombre"
                   class="form-control"
-                  value="<?=$val['nombre'];?>"
+                  value="<?=$val['nombre']?>"
                   required
                 />
               </div>
@@ -96,7 +94,7 @@ if(isset($_POST['editar'])){
                   id="celular"
                   name="celular"
                   class="form-control"
-                  value="<?=$val['celular'];?> "
+                  value="<?=$val['celular']?>"
                   required
                 />
               </div>
@@ -108,7 +106,7 @@ if(isset($_POST['editar'])){
                   id="correo"
                   name="correo"
                   class="form-control"
-                  value="<?=$val['correo'];?>"
+                  value="<?=$val['correo']?>"
                   required
                 />
               </div>

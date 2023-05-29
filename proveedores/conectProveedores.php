@@ -1,20 +1,18 @@
 <?php
-require_once("../db.php");
+require_once("../config/conexion.php");
 
-class Config{
+class Proveedor extends Conectar{
     private $id;
     private $nombre;
     private $telefono;
     private $ciudad;
-    protected $dbCnx;
 
-    public function __construct($id=0, $nombre="", $telefono=0, $ciudad=""){
+    public function __construct($id=0, $nombre="", $telefono=0, $ciudad="", $dbCnx=""){
         $this->id = $id;
         $this->nombre = $nombre;
         $this->telefono = $telefono;
         $this->ciudad = $ciudad;
-
-        $this->dbCnx = new PDO(DB_TYPE.":host=".DB_HOST.";dbname=".DB_NAME, DB_USER, DB_PWD, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
+        parent::__construct($dbCnx);
     }
 
     public function getId(){

@@ -1,15 +1,14 @@
 <?php
 ini_set("display_errors", 1);
-
 ini_set("display_startup_errors", 1);
-
 error_reporting(E_ALL);
-require_once("config.php");
+
+require_once("conectCategorias.php");
 
 //traemos el id de la instancia a editar
 $id = $_GET['id'];
 
-$data = new Config();
+$data = new Categoria();
 $data->setId($id);
 
 //traemos la instancia y la guardamos en $value
@@ -62,15 +61,43 @@ if(isset($_POST['editar'])){
         <img src="css/avatar.png" alt="" class="imagenPerfil">
         <h3 >Maicol Estrada</h3>
       </div>
+
       <div class="menus">
-        <a href="home.html" style="display: flex;gap:2px;">
-          <i class="bi bi-house-door"> </i>
-          <h3 style="margin: 0px;font-weight: 800;">Home</h3>
-        </a>
-        <a href="/Estudiantes/Estudiantes.html" style="display: flex;gap:2px;">
-          <i class="bi bi-people"></i>
-          <h3 style="margin: 0px;">Estudiantes</h3>
-        </a>
+
+        <a href="../home/home.php" style="display: flex;gap:2px;">
+            <i class="bi bi-house-door"> </i>
+            <h3 style="margin: 0px;">Home</h3>
+          </a>
+          <a href="../categorias/categorias.php" style="display: flex;gap:1px;">
+            <i class="bi bi-people"></i>
+            <h3 style="margin: 0px;font-weight: 800;">Categorías</h3>
+          </a>
+          <a href="../clientes/clientes.php" style="display: flex;gap:1px;">
+            <i class="bi bi-people"></i>
+            <h3 style="margin: 0px;font-weight: 800;">Clientes</h3>
+          </a>
+          <a href="../empleados/empleados.php" style="display: flex;gap:1px;">
+            <i class="bi bi-people"></i>
+            <h3 style="margin: 0px;font-weight: 800;">Empleados</h3>
+          </a>
+          <a href="../proveedores/proveedores.php" style="display: flex;gap:1px;">
+            <i class="bi bi-people"></i>
+            <h3 style="margin: 0px;font-weight: 800;">Proveedores</h3>
+          </a>
+          <a href="../productos/productos.php" style="display: flex;gap:1px;">
+            <i class="bi bi-people"></i>
+            <h3 style="margin: 0px;font-weight: 800;">Productos</h3>
+          </a>
+          <a href="../facturas/facturas.php" style="display: flex;gap:1px;">
+            <i class="bi bi-people"></i>
+            <h3 style="margin: 0px;font-weight: 800;">Facturas</h3>
+          </a>
+          <a href="../detailFactura/detailFactura.php" style="display: flex;gap:1px;">
+            <i class="bi bi-people"></i>
+            <h3 style="margin: 0px;font-weight: 800;">Factura Detalle</h3>
+          </a>
+
+
       </div>
     </div>
 
