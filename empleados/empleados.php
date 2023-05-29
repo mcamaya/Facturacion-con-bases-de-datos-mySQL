@@ -73,6 +73,8 @@ $allEmpleados = $data->obtainAll();
               <th scope="col">CELULAR</th>
               <th scope="col">DIRECCION</th>
               <th scope="col">IMAGEN</th>
+              <th scope="col">EDITAR</th>
+              <th scope="col">BORRAR</th>
             </tr>
           </thead>
           <tbody class="" id="tabla">
@@ -87,7 +89,8 @@ $allEmpleados = $data->obtainAll();
               <td><?=$empleado['celular'];?></td>
               <td><?=$empleado['direccion'];?></td>
               <td><img class="table-img" src="<?=$empleado['imagen'];?>" alt=""></td>
-              <td><a class="btn btn-warning" href=""></a></td>
+              <td><a class="btn btn-warning" href="editarEmpleados.php?id=<?=$empleado['id']?>">Editar</a></td>
+              <td><a class="btn btn-danger" href="eliminarEmpleados.php?id=<?=$empleado['id']?>&req=delete">Eliminar</a></td>
             </tr>
             
             <?php

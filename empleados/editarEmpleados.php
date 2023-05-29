@@ -1,3 +1,33 @@
+<?php
+
+ini_set("display_errors", 1);
+
+ini_set("display_startup_errors", 1);
+
+error_reporting(E_ALL);
+
+require_once("config.php");
+
+$data = new Config();
+$id = $_GET['id'];
+$data->setId($id);
+
+
+$record = $data->obtainOne();
+$val = $record[0];
+
+if (isset($_POST['editar'])){
+    $data->setNombre($_POST['nombre']);
+    $data->setCelular($_POST['celular']);
+    $data->setDireccion($_POST['direccion']);
+    $data->setImagen($_POST['imagen']);
+
+    $data->update();
+    echo "<script>alert('Dato actualizado con éxito');document.location='empleados.php';</script>";
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -45,17 +75,30 @@
     </div>
 
     <div class="parte-media">
-        <h2 class="m-2">Estudiante a Editar</h2>
+        <h2 class="m-2">Empleado a Editar</h2>
       <div class="menuTabla contenedor2">
       <form class="col d-flex flex-wrap" action=""  method="post">
               <div class="mb-1 col-12">
-                <label for="nombres" class="form-label">Nombres</label>
+                <label for="nombre" class="form-label">Nombre</label>
                 <input 
                   type="text"
-                  id="nombres"
-                  name="nombres"
-                  class="form-control"  
+                  id="nombre"
+                  name="nombre"
+                  class="form-control"
+                  value="<?=$val['nombre']?>"
                  required
+                />
+              </div>
+
+              <div class="mb-1 col-12">
+                <label for="celular" class="form-label">Celular</label>
+                <input 
+                  type="text"
+                  id="celular"
+                  name="celular"
+                  class="form-control"
+                  value="<?=$val['celular']?>"
+                  required
                 />
               </div>
 
@@ -65,18 +108,20 @@
                   type="text"
                   id="direccion"
                   name="direccion"
-                  class="form-control"  
+                  class="form-control"
+                  value="<?=$val['direccion']?>"
                   required
                 />
               </div>
 
               <div class="mb-1 col-12">
-                <label for="logros" class="form-label">Logros</label>
+                <label for="imagen" class="form-label">Imagen URL</label>
                 <input 
                   type="text"
-                  id="logros"
-                  name="logros"
-                  class="form-control"  
+                  id="imagen"
+                  name="imagen"
+                  class="form-control"
+                  value="<?=$val['imagen']?>"
                   required
                 />
               </div>

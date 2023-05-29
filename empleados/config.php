@@ -71,4 +71,33 @@ class Config{
             $e->getMessage();
         }
     }
+
+    public function delete(){
+        try {
+            $stm = $this->dbCnx->prepare("DELETE FROM empleados WHERE id = ?");
+            $stm->execute([$this->id]);
+        } catch (Exception $e) {
+            $e->getMessage();
+        }
+    }
+
+    public function obtainOne(){
+        try {
+            $stm = $this->dbCnx->prepare("SELECT * FROM empleados WHERE id = ?");
+            $stm->execute([$this->id]);
+            return $stm->fetchAll();
+        } catch (Exception $e) {
+            $e->getMessage();
+        }
+    }
+
+    public function update(){
+        try {
+            $stm = $this->dbCnx->prepare("UPDATE empleados SET nombre = ?, celular = ?, direccion = ?, imagen = ? WHERE id = ?");
+            $stm->execute([$this->nombre, $this->celular, $this->direccion, $this->imagen, $this->id]);
+            return $stm->fetchAll();
+        } catch (Exception $e) {
+            $e->getMessage();
+        }
+    }
 }
