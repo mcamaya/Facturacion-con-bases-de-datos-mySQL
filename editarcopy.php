@@ -1,37 +1,3 @@
-<?php
-ini_set("display_errors", 1);
-
-ini_set("display_startup_errors", 1);
-
-error_reporting(E_ALL);
-require_once("config.php");
-
-//traemos el id de la instancia a editar
-$id = $_GET['id'];
-
-$data = new Config();
-$data->setId($id);
-
-//traemos la instancia y la guardamos en $value
-$record = $data->obtainOne();
-$val = $record[0];
-
-
-if(isset($_POST['editar'])){
-
-    $data->setNombre($_POST['nombre']);
-    $data->setDescripcion($_POST['descripcion']);
-    $data->setImagen($_POST['imagen']);
-
-    $data->update();
-    echo "<script>alert('Datos actualizados satisfactoriamente');document.location='categorias.php';</script>";
-
-}
-
-
-?>
-
-
 <!DOCTYPE html>
 <html>
 
@@ -48,7 +14,7 @@ if(isset($_POST['editar'])){
     integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 
 
-  <link rel="stylesheet" type="text/css" href="../css/pagina.css">
+  <link rel="stylesheet" type="text/css" href="css/estudiantes.css">
 
 </head>
 
@@ -59,55 +25,59 @@ if(isset($_POST['editar'])){
 
       <div class="perfil">
         <h3 style="margin-bottom: 2rem;">Camp Skiler.</h3>
-        <img src="css/avatar.png" alt="" class="imagenPerfil">
+        <img src="images/Diseño sin título.png" alt="" class="imagenPerfil">
         <h3 >Maicol Estrada</h3>
       </div>
       <div class="menus">
-        <a href="home.html" style="display: flex;gap:2px;">
+      <a href="../home/home.php" style="display: flex;gap:2px;">
           <i class="bi bi-house-door"> </i>
-          <h3 style="margin: 0px;font-weight: 800;">Home</h3>
+          <h3 style="margin: 0px;">Home</h3>
         </a>
-        <a href="/Estudiantes/Estudiantes.html" style="display: flex;gap:2px;">
+        <a href="../categorias/categorias.php" style="display: flex;gap:1px;">
           <i class="bi bi-people"></i>
-          <h3 style="margin: 0px;">Estudiantes</h3>
+          <h3 style="margin: 0px;font-weight: 800;">Categorías</h3>
+        </a>
+        <a href="../clientes/clientes.php" style="display: flex;gap:1px;">
+          <i class="bi bi-people"></i>
+          <h3 style="margin: 0px;font-weight: 800;">Clientes</h3>
         </a>
       </div>
     </div>
 
     <div class="parte-media">
-        <h2 class="m-2">Categoría a Editar</h2>
+        <h2 class="m-2">Estudiante a Editar</h2>
       <div class="menuTabla contenedor2">
       <form class="col d-flex flex-wrap" action=""  method="post">
               <div class="mb-1 col-12">
-                <label for="nombre" class="form-label">Nombre</label>
+                <label for="nombres" class="form-label">Nombres</label>
                 <input 
                   type="text"
-                  id="nombre"
-                  name="nombre"
+                  id="nombres"
+                  name="nombres"
                   class="form-control"  
-                  value="<?=$val['nombre']?>"
+                 required
                 />
               </div>
 
               <div class="mb-1 col-12">
-                <label for="descripcion" class="form-label">Descripcion</label>
+                <label for="direccion" class="form-label">Direccion</label>
                 <input 
                   type="text"
-                  id="descripcion"
-                  name="descripcion"
+                  id="direccion"
+                  name="direccion"
                   class="form-control"  
-                  value="<?=$val['descripcion']?>"                 
+                  required
                 />
               </div>
 
               <div class="mb-1 col-12">
-                <label for="imagen" class="form-label">Imagen URL</label>
+                <label for="logros" class="form-label">Logros</label>
                 <input 
                   type="text"
-                  id="imagen"
-                  name="imagen"
+                  id="logros"
+                  name="logros"
                   class="form-control"  
-                  value="<?=$val['imagen']?>"
+                  required
                 />
               </div>
 
@@ -120,7 +90,7 @@ if(isset($_POST['editar'])){
     </div>
 
     <div class="parte-derecho " id="detalles">
-      <h3>Detalle Estudiantes</h3>
+      <h3>Detalle</h3>
       <p>Cargando...</p>
        <!-- ///////Generando la grafica -->
 

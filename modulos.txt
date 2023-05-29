@@ -1,0 +1,49 @@
+Base de datos - supermarket
+
+CATEGORIAS
+- Categoria ID
+- Nombre
+- Descripción
+. Imagen
+
+CLIENTES
+- Cliente ID
+- Nombre
+- Celular
+- Correo
+
+EMPLEADOS
+- Empleado ID
+- Nombre
+- CelularEmp
+- Dirección
+- Imagen
+
+PROVEEDORES
+- Proveedor ID
+- Nombre
+- Teléfono
+- Ciudad
+
+
+PRODUCTOS
+- Producto ID
+- Categoría ID
+- Precio Unitario
+- Stock
+- Unidades pedidas
+- Proveedor ID
+- Nombre Producto
+- Descontinuado
+
+FACTURAS
+- Factura ID
+- Empleado ID
+- Cliente ID
+- Fecha
+
+FACTURA DETALLE
+- Factura ID
+- Producto ID
+- Cantidad
+- Precio Venta

@@ -4,33 +4,26 @@ ini_set("display_errors", 1);
 ini_set("display_startup_errors", 1);
 
 error_reporting(E_ALL);
-require_once("config.php");
 
-//traemos el id de la instancia a editar
+require_once("config.php");
 $id = $_GET['id'];
 
 $data = new Config();
 $data->setId($id);
 
-//traemos la instancia y la guardamos en $value
 $record = $data->obtainOne();
 $val = $record[0];
 
-
 if(isset($_POST['editar'])){
+  $data->setNombre($_POST['nombre']);
+  $data->setCelular($_POST['celular']);
+  $data->setCorreo($_POST['correo']);
 
-    $data->setNombre($_POST['nombre']);
-    $data->setDescripcion($_POST['descripcion']);
-    $data->setImagen($_POST['imagen']);
-
-    $data->update();
-    echo "<script>alert('Datos actualizados satisfactoriamente');document.location='categorias.php';</script>";
-
+  $data->update();
+  echo "<script>alert('Datos actualizados correctamente');document.location='clientes.php';</script>";
 }
 
-
 ?>
-
 
 <!DOCTYPE html>
 <html>
@@ -39,7 +32,7 @@ if(isset($_POST['editar'])){
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Actualizar Estudiante</title>
+  <title>Actualizar Cliente</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&display=swap" rel="stylesheet">
@@ -58,24 +51,30 @@ if(isset($_POST['editar'])){
     <div class="parte-izquierda">
 
       <div class="perfil">
-        <h3 style="margin-bottom: 2rem;">Camp Skiler.</h3>
-        <img src="css/avatar.png" alt="" class="imagenPerfil">
+        <h3 style="margin-bottom: 2rem;">Facturación</h3>
+        <img src="../css/avatar.png" alt="" class="imagenPerfil">
         <h3 >Maicol Estrada</h3>
       </div>
       <div class="menus">
-        <a href="home.html" style="display: flex;gap:2px;">
+
+      <a href="../home/home.php" style="display: flex;gap:2px;">
           <i class="bi bi-house-door"> </i>
-          <h3 style="margin: 0px;font-weight: 800;">Home</h3>
+          <h3 style="margin: 0px;">Home</h3>
         </a>
-        <a href="/Estudiantes/Estudiantes.html" style="display: flex;gap:2px;">
+        <a href="../categorias/categorias.php" style="display: flex;gap:1px;">
           <i class="bi bi-people"></i>
-          <h3 style="margin: 0px;">Estudiantes</h3>
+          <h3 style="margin: 0px;font-weight: 800;">Categorías</h3>
         </a>
+        <a href="../clientes/clientes.php" style="display: flex;gap:1px;">
+          <i class="bi bi-people"></i>
+          <h3 style="margin: 0px;font-weight: 800;">Clientes</h3>
+        </a>
+
       </div>
     </div>
 
     <div class="parte-media">
-        <h2 class="m-2">Categoría a Editar</h2>
+        <h2 class="m-2">Cliente a Editar</h2>
       <div class="menuTabla contenedor2">
       <form class="col d-flex flex-wrap" action=""  method="post">
               <div class="mb-1 col-12">
@@ -84,30 +83,33 @@ if(isset($_POST['editar'])){
                   type="text"
                   id="nombre"
                   name="nombre"
-                  class="form-control"  
-                  value="<?=$val['nombre']?>"
+                  class="form-control"
+                  value="<?=$val['nombre'];?>"
+                  required
                 />
               </div>
 
               <div class="mb-1 col-12">
-                <label for="descripcion" class="form-label">Descripcion</label>
+                <label for="celular" class="form-label">Celular</label>
                 <input 
-                  type="text"
-                  id="descripcion"
-                  name="descripcion"
-                  class="form-control"  
-                  value="<?=$val['descripcion']?>"                 
+                  type="number"
+                  id="celular"
+                  name="celular"
+                  class="form-control"
+                  value="<?=$val['celular'];?> "
+                  required
                 />
               </div>
 
               <div class="mb-1 col-12">
-                <label for="imagen" class="form-label">Imagen URL</label>
+                <label for="correo" class="form-label">Correo</label>
                 <input 
                   type="text"
-                  id="imagen"
-                  name="imagen"
-                  class="form-control"  
-                  value="<?=$val['imagen']?>"
+                  id="correo"
+                  name="correo"
+                  class="form-control"
+                  value="<?=$val['correo'];?>"
+                  required
                 />
               </div>
 
@@ -120,7 +122,7 @@ if(isset($_POST['editar'])){
     </div>
 
     <div class="parte-derecho " id="detalles">
-      <h3>Detalle Estudiantes</h3>
+      <h3>Detalle</h3>
       <p>Cargando...</p>
        <!-- ///////Generando la grafica -->
 

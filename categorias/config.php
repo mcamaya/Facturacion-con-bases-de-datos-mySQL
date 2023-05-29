@@ -1,5 +1,5 @@
 <?php
-require("db.php");
+require("../db.php");
 class Config {
     private $id;
     private $nombre;
@@ -90,8 +90,10 @@ class Config {
         try {
             $stm = $this->dbCnx->prepare("UPDATE categorias SET nombre = ?, descripcion = ?, imagen = ? WHERE id = ?");
             $stm -> execute([$this->nombre, $this->descripcion, $this->imagen, $this->id]);
-        } catch (\Throwable $th) {
-            //throw $th;
+        } catch (Exception $e) {
+            return $e->getMessage();
         }
     }
+
+    
 }
