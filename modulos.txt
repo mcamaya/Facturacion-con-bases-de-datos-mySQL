@@ -1,18 +1,18 @@
 Base de datos - supermarket
 
-CATEGORIAS
+CATEGORIAS (agregar, editar, eliminar)
 - Categoria ID
 - Nombre
 - Descripción
 . Imagen
 
-CLIENTES
+CLIENTES (agregar, editar)
 - Cliente ID
 - Nombre
 - Celular
 - Correo
 
-EMPLEADOS
+EMPLEADOS (agregar, editar, eliminar)
 - Empleado ID
 - Nombre
 - CelularEmp

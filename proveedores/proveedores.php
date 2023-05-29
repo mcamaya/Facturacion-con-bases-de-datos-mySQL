@@ -1,3 +1,10 @@
+<?php
+require_once("config.php");
+
+$data = new Config();
+$record = $data->obtainAll();
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -5,7 +12,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Clientes</title>
+  <title>Proveedores</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&display=swap" rel="stylesheet">
@@ -49,6 +56,7 @@
           <i class="bi bi-people"></i>
           <h3 style="margin: 0px;font-weight: 800;">Proveedores</h3>
         </a>
+       
 
 
       </div>
@@ -64,17 +72,28 @@
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">NOMBREs</th>
-              <th scope="col">DIRECCION</th>
-              <th scope="col">LOGROS</th>
-              <th scope="col">DETALLE</th>
+              <th scope="col">NOMBRE</th>
+              <th scope="col">TELEFONO</th>
+              <th scope="col">CIUDAD</th>
             </tr>
           </thead>
           <tbody class="" id="tabla">
 
-            <!-- ///////Llenado DInamico desde la Base de Datos -->
-         
-       
+            <!-- ///////Llenado Dinamico desde la Base de Datos -->
+          <?php
+          foreach ($record as $key => $proveedor) {
+          ?>
+
+          <tr>
+            <td><?=$proveedor['id']?></td>
+            <td><?=$proveedor['nombre']?></td>
+            <td><?=$proveedor['telefono']?></td>
+            <td><?=$proveedor['ciudad']?></td>
+          </tr>
+
+          <?php
+          }
+          ?>
 
           </tbody>
         
@@ -105,38 +124,37 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body" style="background-color: rgb(231, 253, 246);">
-            <form class="col d-flex flex-wrap" method="post">
+            <form class="col d-flex flex-wrap" action="agregarProveedores.php" method="post">
               <div class="mb-1 col-12">
-                <label for="nombres" class="form-label">Nombres</label>
+                <label for="nombre" class="form-label">Nombre</label>
                 <input 
                   type="text"
-                  id="nombres"
-                  name="nombres"
+                  id="nombre"
+                  name="nombre"
                   class="form-control"
                   required  
                 />
               </div>
 
               <div class="mb-1 col-12">
-                <label for="direccion" class="form-label">Direccion</label>
+                <label for="telefono" class="form-label">Telefono</label>
                 <input 
-                  type="text"
-                  id="direccion"
-                  name="direccion"
+                  type="number"
+                  id="telefono"
+                  name="telefono"
                   class="form-control"
                   required  
                 />
               </div>
 
               <div class="mb-1 col-12">
-                <label for="logros" class="form-label">Logros</label>
+                <label for="ciudad" class="form-label">Ciudad</label>
                 <input 
                   type="text"
-                  id="logros"
-                  name="logros"
+                  id="ciudad"
+                  name="ciudad"
                   class="form-control"
-                  required  
-                 
+                  required
                 />
               </div>
 
