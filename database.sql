@@ -28,6 +28,20 @@ CREATE TABLE proveedores(
     ciudad VARCHAR(255)
 );
 
+--Foreign Key
+
+CREATE TABLE facturas (
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    empleado_id INT NOT NULL,
+    cliente_id INT NOT NULL,
+    fecha DATE NOT NULL,
+
+    FOREIGN KEY fk_empleado_id(empleado_id) REFERENCES empleados(id),
+    FOREIGN KEY fk_cliente_id(cliente_id) REFERENCES clientes(id)
+
+);
+
+--Datos por defecto
 INSERT INTO categorias (id, nombre, descripcion, imagen) 
 VALUES (1, "Ropa Bebé", "Compra online Ropa para bebé de tus marcas favoritas, encuentra Ropa para bebé de diferentes modelos a precios increíbles.", "https://img.remediosdigitales.com/467890/portada/450_1000.jpg"),
 (2, "Electrodomésticos", "Encuentra neveras, nevecones, lavadoras, congeladores, aire acondicionado y más de las marcas Challenger, Haceb, Mabe, Whirpool, Abba y muchas más...", "https://www.semana.com/resizer/OS-i-9QcsuU_4bwAj2J23Le98sg=/1280x720/smart/filters:format(jpg):quality(80)/cloudfront-us-east-1.images.arcpublishing.com/semana/TGVVZATTDJGO7D3AW2P3RQDY5E.jpg"),
@@ -52,3 +66,13 @@ VALUES (1, "Repuestos La 21", 60753564, "Girón"),
 (2, "Mercao' Pelao'", 60456843, "Tunja"),
 (3, "Electro-Calidad", 60856417, "San Gil")
 ;
+
+--Este código fue hecho desde phpMyAdmin
+INSERT INTO `facturas` (`id`, `empleado_id`, `cliente_id`, `fecha`) VALUES ('1', '1', '3', '2023-05-28'), ('2', '3', '1', '2023-05-29');
+
+--Código por Cristian
+SELECT * FROM facturas INNER JOIN empleados ON facturas.empleado_id = empleados.id INNER JOIN clientes ON facturas.cliente_id = clientes.id;
+--modificado
+SELECT facturas.id, clientes.nombre, empleados.nombre, facturas.fecha FROM facturas 
+INNER JOIN empleados ON facturas.empleado_id = empleados.id 
+INNER JOIN clientes ON facturas.cliente_id = clientes.id;

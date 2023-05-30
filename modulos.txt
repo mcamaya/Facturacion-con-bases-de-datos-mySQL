@@ -19,29 +19,29 @@ EMPLEADOS (agregar, editar, eliminar)
 - Dirección
 - Imagen
 
-PROVEEDORES
+PROVEEDORES (agregar, editar, eliminar)
 - Proveedor ID
 - Nombre
 - Teléfono
 - Ciudad
-
-
-PRODUCTOS
-- Producto ID
-- Categoría ID
-- Precio Unitario
-- Stock
-- Unidades pedidas
-- Proveedor ID
-- Nombre Producto
-- Descontinuado
-
 
 FACTURAS
 - Factura ID
 - Empleado ID
 - Cliente ID
 - Fecha
+
+PRODUCTOS
+- Producto ID
+- Categoría ID
+- Proveedor ID
+- Precio Unitario
+- Stock
+- Unidades pedidas
+- Nombre Producto
+- Descontinuado
+
+
 
 FACTURA DETALLE
 - Factura ID
