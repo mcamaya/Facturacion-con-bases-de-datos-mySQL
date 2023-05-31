@@ -8,11 +8,11 @@ $registro = new Registro();
 
 if(isset($_POST['registrarse'])){
 
-    $registro->setIdEmpleado(2);
+    $registro->setIdEmpleado(3);
     $registro->setUsername($_POST['username']);
     $registro->setEmail($_POST['email']);
     $registro->setPassword($_POST['password']);
 
     $registro->insertData();
-    echo "<script>alert('Dato guardado con éxito);document.location='login.php';</script>";
+    echo "<script>alert('Dato guardado con éxito');document.location='login.php';</script>";
 }

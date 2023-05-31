@@ -55,7 +55,7 @@ class Registro extends Conectar {
 
     public function insertData(){
         try {
-            $stm = $this->dbCnx->prepare("INSERT INTO users (id_empleados, email, username, password) values(?,?,?,?)");
+            $stm = $this->dbCnx->prepare("INSERT INTO users (id_empleado, email, username, password) values(?,?,?,?)");
             $stm->execute([$this->id_empleado, $this->email, $this->username, md5($this->password)]);
         } catch (Exception $e) {
             return $e->getMessage();
