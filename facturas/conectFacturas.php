@@ -66,4 +66,13 @@ class Factura extends Conectar{
             return $e->getMessage();
         }
     }
+
+    public function delete(){
+        try {
+            $stm = $this->dbCnx->prepare("DELETE FROM facturas WHERE fct_id = ?");
+            $stm->execute([$this->id]);
+        } catch (Exception $e) {
+            $e->getMessage();
+        }
+    }
 }

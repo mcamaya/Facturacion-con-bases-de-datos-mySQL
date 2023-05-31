@@ -107,10 +107,11 @@ $allFacturas = $facturas->obtainAll_innerJoin();
             ?>
             
             <tr>
-              <td><?=$factura['id'];?></td>
-              <td><?=$factura['nombre'];?></td>
-              <td><?=$factura['nombre'];?></td>
-              <td><?=$factura['fecha'];?></td>
+              <td><?=$factura['fct_id'];?></td>
+              <td><?=$factura['emp_nombre'];?></td>
+              <td><?=$factura['clt_nombre'];?></td>
+              <td><?=$factura['fct_fecha'];?></td>
+              <td><a class="btn btn-danger" href="borrarFacturas.php?id=<?=$factura['fct_id']?>&req=delete">Borrar</a></td>
             </tr>
 
             <?php
@@ -158,7 +159,7 @@ $allFacturas = $facturas->obtainAll_innerJoin();
                   foreach($allEmpleados as $empleado){
                   ?>
 
-                  <option name="empleado" value="<?=$empleado['id'];?>"><?=$empleado['nombre']?></option>
+                  <option name="empleado" value="<?=$empleado['emp_id'];?>"><?=$empleado['emp_nombre']?></option>
 
                   <?php
                   }
@@ -175,7 +176,7 @@ $allFacturas = $facturas->obtainAll_innerJoin();
                   foreach($allClientes as $cliente){
                   ?>
 
-                  <option name="cliente" value="<?=$cliente['id'];?>"><?=$cliente['nombre']?></option>
+                  <option name="cliente" value="<?=$cliente['clt_id'];?>"><?=$cliente['clt_nombre']?></option>
 
                   <?php
                   }
