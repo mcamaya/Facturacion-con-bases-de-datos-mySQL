@@ -36,8 +36,8 @@ CREATE TABLE facturas (
     cliente_id INT NOT NULL,
     fecha DATE NOT NULL,
 
-    FOREIGN KEY fk_empleado_id(empleado_id) REFERENCES empleados(id),
-    FOREIGN KEY fk_cliente_id(cliente_id) REFERENCES clientes(id)
+    FOREIGN KEY (empleado_id) REFERENCES empleados(id),
+    FOREIGN KEY (cliente_id) REFERENCES clientes(id)
 
 );
 
