@@ -41,6 +41,16 @@ CREATE TABLE facturas (
 
 );
 
+CREATE TABLE users(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    id_empleado INT NOT NULL,
+    email VARCHAR(80) NOT NULL,
+    username VARCHAR(80) NOT NULL,
+    password VARCHAR (60) NOT NULL,
+    
+    FOREIGN KEY (id_empleado) REFERENCES empleados(id)
+);
+
 --Datos por defecto
 INSERT INTO categorias (id, nombre, descripcion, imagen) 
 VALUES (1, "Ropa Bebé", "Compra online Ropa para bebé de tus marcas favoritas, encuentra Ropa para bebé de diferentes modelos a precios increíbles.", "https://img.remediosdigitales.com/467890/portada/450_1000.jpg"),

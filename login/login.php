@@ -10,7 +10,7 @@
     <!-- boostrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <!-- css -->
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="img/login.css">
 
 </head>
 <body>
@@ -21,28 +21,30 @@
             <img src="img/camper.png" alt="" class="logo"></div>
             <div class="d-flex justify-content-center align-items-center"><h1 style="font-weight: 800;">BIENVENIDOS</h1></div>
             <div  class="d-flex justify-content-center align-items-center" >
-                <form>
+                <form action="loguearse.php" method="post">
                     <div class="mb-3">
-                    <label for="campo" class="form-label">Campo</label>
+                    <label for="email" class="form-label">Email</label>
                         <input 
                           type="text"
-                          id="campo"
-                          name="campo"
-                          class="form-control"  
+                          id="email"
+                          name="email"
+                          class="form-control"
+                          required  
                         />
-                      <div id="emailHelp" class="form-text">Mañana es una excusa maravillosa, ¿No crees?</div>
+                      <div id="emailHelp" class="form-text">Una buena administración es la clave del éxito</div>
                     </div>
                     <div class="mb-3">
-                    <label for="campo" class="form-label">Campo</label>
+                    <label for="password" class="form-label">Password</label>
                         <input 
-                          type="text"
-                          id="campo"
-                          name="campo"
-                          class="form-control"  
+                          type="password"
+                          id="password"
+                          name="password"
+                          class="form-control"
+                          required  
                         />
                     </div>
                  
-                    <button type="submit" class="btn btn-primary"></button>
+                    <input type="submit" class="btn btn-primary" value="Log In" name="loguearse">
                   </form>
                   
 
@@ -56,46 +58,49 @@
         </div>
         <div class="section2" id="section2">
              <div class="d-flex justify-content-star " >
-                <h1 style="font-weight: 800;font-size:larger;"> Nuevo</h1></div>
-                <p style="font-style: italic;">"cuando enseñar es un arte aprender es un placer"</p>
+                <h1 style="font-weight: 800;font-size:larger;">Nuevo Registro</h1></div>
+                <p style="font-style: italic;">"Tú lo necesitas, nosotros lo facilitamos."</p>
           
                 
              <div  class="d-flex justify-content-center align-items-center" >
                 
-                <form>
-                    <h1 class="m-5" style="font-weight: 800;">REGISTRAR</h1>
+                <form action="registrarse.php" method="post">
+                    <h1 class="m-5" style="font-weight: 800;">REGISTRAR USUARIO</h1>
                     <div class="mb-3">
-                        <label for="campo" class="form-label">campo</label>
+                        <label for="email" class="form-label">Email</label>
                         <input 
                           type="text"
-                          id="campo"
-                          name="campo"
-                          class="form-control"  
+                          id="email"
+                          name="email"
+                          class="form-control"
+                          required  
                         />
                       </div>
                     <div class="mb-3">
-                    <label for="campo" class="form-label">campo</label>
+                    <label for="username" class="form-label">Username</label>
                         <input 
                           type="text"
-                          id="campo"
-                          name="campo"
-                          class="form-control"  
+                          id="username"
+                          name="username"
+                          class="form-control"
+                          required  
                         />
                     </div>
                     <div class="mb-3">
-                    <label for="campo" class="form-label">campo</label>
+                    <label for="password" class="form-label">Password</label>
                         <input 
                           type="password"
-                          id="campo"
-                          name="campo"
-                          class="form-control"  
+                          id="password"
+                          name="password"
+                          class="form-control"
+                          required  
                         />
                     </div>
                     <div class="mb-3 form-check">
                       <input type="checkbox" class="form-check-input" id="exampleCheck1">
                       <label class="form-check-label" for="exampleCheck1">Check me out</label>
                     </div>
-                    <button type="submit" class="btn btn-primary"></button>
+                    <input type="submit" class="btn btn-primary" value="Registrar" name="registrarse">
                   </form>
 
             </div>
