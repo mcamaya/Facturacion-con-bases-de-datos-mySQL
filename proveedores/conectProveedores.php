@@ -45,7 +45,7 @@ class Proveedor extends Conectar{
 
     public function insertData(){
         try {
-            $stm = $this->dbCnx->prepare("INSERT INTO proveedores (nombre, telefono, ciudad) values(?,?,?)");
+            $stm = $this->dbCnx->prepare("INSERT INTO proveedores (prv_nombre, prv_telefono, prv_ciudad) values(?,?,?)");
             $stm->execute([$this->nombre, $this->telefono, $this->ciudad]);
         } catch (Exception $e) {
             return $e->getMessage();
@@ -64,7 +64,7 @@ class Proveedor extends Conectar{
 
     public function delete(){
         try {
-            $stm = $this->dbCnx->prepare("DELETE FROM proveedores WHERE id = ?");
+            $stm = $this->dbCnx->prepare("DELETE FROM proveedores WHERE prv_id = ?");
             $stm -> execute([$this->id]);
             return $stm->fetchAll();
         } catch (Exception $e) {
@@ -74,7 +74,7 @@ class Proveedor extends Conectar{
 
     public function obtainOne(){
         try {
-            $stm = $this->dbCnx->prepare("SELECT * FROM proveedores WHERE id = ?");
+            $stm = $this->dbCnx->prepare("SELECT * FROM proveedores WHERE prv_id = ?");
             $stm->execute([$this->id]);
             return $stm -> fetchAll();
         } catch (Exception $e) {
@@ -84,7 +84,7 @@ class Proveedor extends Conectar{
 
     public function update(){
         try {
-            $stm = $this->dbCnx->prepare("UPDATE proveedores SET nombre = ?, telefono = ?, ciudad = ? WHERE id = ?");
+            $stm = $this->dbCnx->prepare("UPDATE proveedores SET prv_nombre = ?, prv_telefono = ?, prv_ciudad = ? WHERE prv_id = ?");
             $stm -> execute([$this->nombre, $this->telefono, $this->ciudad, $this->id]);
         } catch (Exception $e) {
             return $e->getMessage();

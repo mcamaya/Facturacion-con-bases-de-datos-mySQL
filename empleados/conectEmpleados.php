@@ -55,7 +55,7 @@ class Empleado extends Conectar{
 
     public function insertData(){
         try {
-            $stm = $this->dbCnx->prepare("INSERT INTO empleados (nombre, celular, direccion, imagen) values(?,?,?,?)");
+            $stm = $this->dbCnx->prepare("INSERT INTO empleados (emp_nombre, emp_celular, emp_direccion, emp_imagen) values(?,?,?,?)");
             $stm->execute([$this->nombre, $this->celular, $this->direccion, $this->imagen]);
         } catch (Exception $e) {
             $e->getMessage();
@@ -74,7 +74,7 @@ class Empleado extends Conectar{
 
     public function delete(){
         try {
-            $stm = $this->dbCnx->prepare("DELETE FROM empleados WHERE id = ?");
+            $stm = $this->dbCnx->prepare("DELETE FROM empleados WHERE emp_id = ?");
             $stm->execute([$this->id]);
         } catch (Exception $e) {
             $e->getMessage();
@@ -83,7 +83,7 @@ class Empleado extends Conectar{
 
     public function obtainOne(){
         try {
-            $stm = $this->dbCnx->prepare("SELECT * FROM empleados WHERE id = ?");
+            $stm = $this->dbCnx->prepare("SELECT * FROM empleados WHERE emp_id = ?");
             $stm->execute([$this->id]);
             return $stm->fetchAll();
         } catch (Exception $e) {
@@ -93,7 +93,7 @@ class Empleado extends Conectar{
 
     public function update(){
         try {
-            $stm = $this->dbCnx->prepare("UPDATE empleados SET nombre = ?, celular = ?, direccion = ?, imagen = ? WHERE id = ?");
+            $stm = $this->dbCnx->prepare("UPDATE empleados SET emp_nombre = ?, emp_celular = ?, emp_direccion = ?, emp_imagen = ? WHERE emp_id = ?");
             $stm->execute([$this->nombre, $this->celular, $this->direccion, $this->imagen, $this->id]);
             return $stm->fetchAll();
         } catch (Exception $e) {

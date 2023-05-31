@@ -112,7 +112,7 @@ if(isset($_POST['editar'])){
                   id="nombre"
                   name="nombre"
                   class="form-control"  
-                  value="<?=$val['nombre']?>"
+                  value="<?=$val['ctg_nombre']?>"
                 />
               </div>
 
@@ -123,7 +123,7 @@ if(isset($_POST['editar'])){
                   id="descripcion"
                   name="descripcion"
                   class="form-control"  
-                  value="<?=$val['descripcion']?>"                 
+                  value="<?=$val['ctg_descripcion']?>"                 
                 />
               </div>
 
@@ -134,7 +134,7 @@ if(isset($_POST['editar'])){
                   id="imagen"
                   name="imagen"
                   class="form-control"  
-                  value="<?=$val['imagen']?>"
+                  value="<?=$val['ctg_imagen']?>"
                 />
               </div>
 

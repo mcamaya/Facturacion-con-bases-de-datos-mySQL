@@ -104,12 +104,12 @@ $allCategories = $data->obtainAll();
 
             <!-- ///////Llenado Dinamico desde la Base de Datos -->
             <tr>
-              <td><?=$category['id']?></td>
-              <td><?=$category['nombre']?></td>
-              <td><?=$category['descripcion']?></td>
-              <td><img class="table-img" src="<?=$category['imagen'];?>" alt="img"></td>
-              <td><a class="btn btn-danger" href="eliminarCategorias.php?id=<?=$category['id']?>&req=delete">Borrar</a></td>
-              <td><a class="btn btn-warning" href="editarCategorias.php?id=<?=$category['id']?>">Editar</a></td>
+              <td><?=$category['ctg_id']?></td>
+              <td><?=$category['ctg_nombre']?></td>
+              <td><?=$category['ctg_descripcion']?></td>
+              <td><img class="table-img" src="<?=$category['ctg_imagen'];?>" alt="img"></td>
+              <td><a class="btn btn-danger" href="eliminarCategorias.php?id=<?=$category['ctg_id']?>&req=delete">Borrar</a></td>
+              <td><a class="btn btn-warning" href="editarCategorias.php?id=<?=$category['ctg_id']?>">Editar</a></td>
             </tr>
          
             <?php

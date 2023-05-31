@@ -101,13 +101,13 @@ $allEmpleados = $data->obtainAll();
             ?>
             <!-- ///////Llenado DInamico desde la Base de Datos -->
             <tr>
-              <td><?=$empleado['id'];?></td>
-              <td><?=$empleado['nombre'];?></td>
-              <td><?=$empleado['celular'];?></td>
-              <td><?=$empleado['direccion'];?></td>
-              <td><img class="table-img" src="<?=$empleado['imagen'];?>" alt=""></td>
-              <td><a class="btn btn-warning" href="editarEmpleados.php?id=<?=$empleado['id']?>">Editar</a></td>
-              <td><a class="btn btn-danger" href="eliminarEmpleados.php?id=<?=$empleado['id']?>&req=delete">Eliminar</a></td>
+              <td><?=$empleado['emp_id'];?></td>
+              <td><?=$empleado['emp_nombre'];?></td>
+              <td><?=$empleado['emp_celular'];?></td>
+              <td><?=$empleado['emp_direccion'];?></td>
+              <td><img class="table-img" src="<?=$empleado['emp_imagen'];?>" alt=""></td>
+              <td><a class="btn btn-warning" href="editarEmpleados.php?id=<?=$empleado['emp_id']?>">Editar</a></td>
+              <td><a class="btn btn-danger" href="eliminarEmpleados.php?id=<?=$empleado['emp_id']?>&req=delete">Eliminar</a></td>
             </tr>
             
             <?php

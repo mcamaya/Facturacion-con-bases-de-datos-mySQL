@@ -1,77 +1,77 @@
 CREATE DATABASE facturacion;
 CREATE TABLE categorias(
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    nombre VARCHAR(100) NOT NULL,
-    descripcion VARCHAR(255),
-    imagen VARCHAR(255)
+    ctg_id INT PRIMARY KEY AUTO_INCREMENT,
+    ctg_nombre VARCHAR(100) NOT NULL,
+    ctg_descripcion VARCHAR(255),
+    ctg_imagen VARCHAR(255)
 );
 
 CREATE TABLE clientes(
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    nombre VARCHAR(255) NOT NULL,
-    celular INT NOT NULL,
-    correo VARCHAR(225)
+    clt_id INT PRIMARY KEY AUTO_INCREMENT,
+    clt_nombre VARCHAR(255) NOT NULL,
+    clt_celular INT NOT NULL,
+    clt_correo VARCHAR(225)
 );
 
 CREATE TABLE empleados(
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    nombre VARCHAR(255) NOT NULL,
-    celular VARCHAR(255) NOT NULL,
-    direccion VARCHAR(255),
-    imagen VARCHAR(255)
+    emp_id INT PRIMARY KEY AUTO_INCREMENT,
+    emp_nombre VARCHAR(255) NOT NULL,
+    emp_celular VARCHAR(255) NOT NULL,
+    emp_direccion VARCHAR(255),
+    emp_imagen VARCHAR(255)
 );
 
 CREATE TABLE proveedores(
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    nombre VARCHAR(255) NOT NULL,
-    telefono INT NOT NULL,
-    ciudad VARCHAR(255)
+    prv_id INT PRIMARY KEY AUTO_INCREMENT,
+    prv_nombre VARCHAR(255) NOT NULL,
+    prv_telefono INT NOT NULL,
+    prv_ciudad VARCHAR(255)
 );
 
 --Foreign Key
 
 CREATE TABLE facturas (
-    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    empleado_id INT NOT NULL,
-    cliente_id INT NOT NULL,
-    fecha DATE NOT NULL,
+    fct_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    fct_empleado_id INT NOT NULL,
+    fct_cliente_id INT NOT NULL,
+    fct_fecha DATE NOT NULL,
 
-    FOREIGN KEY (empleado_id) REFERENCES empleados(id),
-    FOREIGN KEY (cliente_id) REFERENCES clientes(id)
+    FOREIGN KEY (fct_empleado_id) REFERENCES empleados(emp_id),
+    FOREIGN KEY (fct_cliente_id) REFERENCES clientes(clt_id)
 
 );
 
 CREATE TABLE users(
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    id_empleado INT NOT NULL,
-    email VARCHAR(80) NOT NULL,
-    username VARCHAR(80) NOT NULL,
-    password VARCHAR (60) NOT NULL,
+    usr_id INT PRIMARY KEY AUTO_INCREMENT,
+    usr_id_empleado INT NOT NULL,
+    usr_email VARCHAR(80) NOT NULL,
+    usr_username VARCHAR(80) NOT NULL,
+    usr_password VARCHAR (60) NOT NULL,
     
-    FOREIGN KEY (id_empleado) REFERENCES empleados(id)
+    FOREIGN KEY (usr_id_empleado) REFERENCES empleados(emp_id)
 );
 
 --Datos por defecto
-INSERT INTO categorias (id, nombre, descripcion, imagen) 
+INSERT INTO categorias (ctg_id, ctg_nombre, ctg_descripcion, ctg_imagen) 
 VALUES (1, "Ropa Bebé", "Compra online Ropa para bebé de tus marcas favoritas, encuentra Ropa para bebé de diferentes modelos a precios increíbles.", "https://img.remediosdigitales.com/467890/portada/450_1000.jpg"),
 (2, "Electrodomésticos", "Encuentra neveras, nevecones, lavadoras, congeladores, aire acondicionado y más de las marcas Challenger, Haceb, Mabe, Whirpool, Abba y muchas más...", "https://www.semana.com/resizer/OS-i-9QcsuU_4bwAj2J23Le98sg=/1280x720/smart/filters:format(jpg):quality(80)/cloudfront-us-east-1.images.arcpublishing.com/semana/TGVVZATTDJGO7D3AW2P3RQDY5E.jpg"),
 (3, "Mascotas", "Aquí, encontrarás camas, juguetes, placas, collares y muchos más artículos para perros y gatos, con los cuales les brindarás un ambiente acogedor.", "https://fotos.perfil.com/2022/05/27/mercado-para-mascotas-1362928.jpg")
 ;
 
 
-INSERT INTO clientes (id, nombre, celular, correo) 
+INSERT INTO clientes (clt_id, clt_nombre, clt_celular, clt_correo) 
 VALUES (1, "Lucia Pedraza", 31926156, "luci@mail.com"), 
 (2, "Esteban Quito", 31154518, "esteban@mail.com"), 
 (3, "Arturo Hernandez", 31257460, "arturito@mail.com")
 ;
 
-INSERT INTO empleados (id, nombre, celular, direccion, imagen) 
+INSERT INTO empleados (emp_id, emp_nombre, emp_celular, emp_direccion, emp_imagen) 
 VALUES (1, "Alan Brito", 31186435, "Calle 40 #21", "https://concepto.de/wp-content/uploads/2018/08/persona-e1533759204552.jpg"),
 (2, "Juanita Sepúlveda", 31249672, "Calle 14 #31", "https://aishlatino.com/wp-content/uploads/2021/11/que-tipo-de-persona-te-gustaria-ser-730x411-SP.jpg"),
 (3, "Jose Bejarano", 31947685, "Carrera 46 #11", "https://cdn0.psicologia-online.com/es/posts/2/4/2/que_piensa_una_persona_cuando_dejas_de_buscarla_5242_orig.jpg")
 ;
 
-INSERT INTO proveedores (id, nombre, telefono, ciudad)
+INSERT INTO proveedores (prv_id, prv_nombre, prv_telefono, prv_ciudad)
 VALUES (1, "Repuestos La 21", 60753564, "Girón"),
 (2, "Mercao' Pelao'", 60456843, "Tunja"),
 (3, "Electro-Calidad", 60856417, "San Gil")

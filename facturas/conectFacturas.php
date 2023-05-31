@@ -46,7 +46,7 @@ class Factura extends Conectar{
 
     public function insertData(){
         try {
-            $stm = $this->dbCnx->prepare("INSERT INTO facturas (empleado_id, cliente_id, fecha) values(?,?,?)");
+            $stm = $this->dbCnx->prepare("INSERT INTO facturas (fct_empleado_id, fct_cliente_id, fct_fecha) values(?,?,?)");
             $stm->execute([$this->id_empleado, $this->id_cliente, $this->fecha]);
         } catch (Exception $e) {
             return $e->getMessage();
@@ -56,9 +56,9 @@ class Factura extends Conectar{
     public function obtainAll_innerJoin(){
         try {
             $stm = $this->dbCnx->prepare("
-            SELECT facturas.id, empleados.nombre, clientes.nombre, facturas.fecha FROM facturas
-            INNER JOIN empleados ON facturas.empleado_id = empleados.id 
-            INNER JOIN clientes ON facturas.cliente_id = clientes.id;
+            SELECT facturas.fct_id, empleados.emp_nombre, clientes.clt_nombre, facturas.fct_fecha FROM facturas
+            INNER JOIN empleados ON facturas.fct_empleado_id = empleados.emp_id 
+            INNER JOIN clientes ON facturas.fct_cliente_id = clientes.clt_id;
             ");
             $stm->execute();
             return $stm->fetchAll();

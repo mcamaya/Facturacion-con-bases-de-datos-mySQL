@@ -99,12 +99,12 @@ $allCustomers = $data->obtainAll();
           ?>
 
             <tr>
-              <td><?=$customer['id']?></td>
-              <td><?=$customer['nombre']?></td>
-              <td><?=$customer['celular']?></td>
-              <td><?=$customer['correo']?></td>
-              <td><a class="btn btn-warning" href="editarClientes.php?id=<?=$customer['id']?>">Editar</a></td>
-              <td><a class="btn btn-danger" href="borrarClientes.php?id=<?=$customer['id']?>&req=delete">Borrar</a></td>
+              <td><?=$customer['clt_id']?></td>
+              <td><?=$customer['clt_nombre']?></td>
+              <td><?=$customer['clt_celular']?></td>
+              <td><?=$customer['clt_correo']?></td>
+              <td><a class="btn btn-warning" href="editarClientes.php?id=<?=$customer['clt_id']?>">Editar</a></td>
+              <td><a class="btn btn-danger" href="borrarClientes.php?id=<?=$customer['clt_id']?>&req=delete">Borrar</a></td>
             </tr>
 
           <?php

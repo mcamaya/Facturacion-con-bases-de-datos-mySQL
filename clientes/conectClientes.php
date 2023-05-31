@@ -46,7 +46,7 @@ class Cliente extends Conectar{
 
     public function insertData(){
         try {
-            $stm = $this->dbCnx->prepare("INSERT INTO clientes (nombre, celular, correo) values(?,?,?)");
+            $stm = $this->dbCnx->prepare("INSERT INTO clientes (clt_nombre, clt_celular, clt_correo) values(?,?,?)");
             $stm->execute([$this->nombre, $this->celular, $this->correo]);
         } catch (Exception $e) {
             return $e->getMessage();
@@ -65,7 +65,7 @@ class Cliente extends Conectar{
 
     public function obtainOne(){
         try {
-            $stm = $this->dbCnx->prepare("SELECT * FROM clientes WHERE id = ?");
+            $stm = $this->dbCnx->prepare("SELECT * FROM clientes WHERE clt_id = ?");
             $stm->execute([$this->id]);
             return $stm->fetchAll();
         } catch (Exception $e) {
@@ -75,7 +75,7 @@ class Cliente extends Conectar{
 
     public function update(){
         try {
-            $stm = $this->dbCnx->prepare("UPDATE clientes SET nombre = ?, celular = ?, correo = ? WHERE id = ?");
+            $stm = $this->dbCnx->prepare("UPDATE clientes SET clt_nombre = ?, clt_celular = ?, clt_correo = ? WHERE clt_id = ?");
             $stm->execute([$this->nombre, $this->celular, $this->correo, $this->id]);
             return $stm->fetchAll();
         } catch (Exception $e) {
@@ -85,7 +85,7 @@ class Cliente extends Conectar{
 
     public function delete(){
         try {
-            $stm = $this->dbCnx->prepare("DELETE FROM clientes WHERE id = ?");
+            $stm = $this->dbCnx->prepare("DELETE FROM clientes WHERE clt_id = ?");
             $stm -> execute([$this->id]);
             return $stm->fetchAll();
         } catch (Exception $e) {

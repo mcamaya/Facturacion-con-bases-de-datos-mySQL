@@ -47,7 +47,7 @@ class Categoria extends Conectar {
 
     public function insertData(){
         try {
-            $stm = $this->dbCnx->prepare("INSERT INTO categorias (nombre, descripcion, imagen) values(?,?,?)");
+            $stm = $this->dbCnx->prepare("INSERT INTO categorias (ctg_nombre, ctg_descripcion, ctg_imagen) values(?,?,?)");
             $stm -> execute([$this->nombre, $this->descripcion, $this->imagen]);
         } catch (Exception $e) {
             return $e->getMessage();
@@ -67,7 +67,7 @@ class Categoria extends Conectar {
 
     public function delete(){
         try {
-            $stm = $this->dbCnx->prepare("DELETE FROM categorias WHERE id = ?");
+            $stm = $this->dbCnx->prepare("DELETE FROM categorias WHERE ctg_id = ?");
             $stm -> execute([$this->id]);
             return $stm->fetchAll();
         } catch (Exception $e) {
@@ -77,7 +77,7 @@ class Categoria extends Conectar {
 
     public function obtainOne(){
         try {
-            $stm = $this->dbCnx->prepare("SELECT * FROM categorias WHERE id = ?");
+            $stm = $this->dbCnx->prepare("SELECT * FROM categorias WHERE ctg_id = ?");
             $stm->execute([$this->id]);
             return $stm -> fetchAll();
         } catch (Exception $e) {
@@ -87,7 +87,7 @@ class Categoria extends Conectar {
 
     public function update(){
         try {
-            $stm = $this->dbCnx->prepare("UPDATE categorias SET nombre = ?, descripcion = ?, imagen = ? WHERE id = ?");
+            $stm = $this->dbCnx->prepare("UPDATE categorias SET ctg_nombre = ?, ctg_descripcion = ?, ctg_imagen = ? WHERE ctg_id = ?");
             $stm -> execute([$this->nombre, $this->descripcion, $this->imagen, $this->id]);
         } catch (Exception $e) {
             return $e->getMessage();

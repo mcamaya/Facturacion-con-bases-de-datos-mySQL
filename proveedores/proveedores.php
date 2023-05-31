@@ -104,12 +104,12 @@ $record = $data->obtainAll();
           ?>
 
           <tr>
-            <td><?=$proveedor['id']?></td>
-            <td><?=$proveedor['nombre']?></td>
-            <td><?=$proveedor['telefono']?></td>
-            <td><?=$proveedor['ciudad']?></td>
-            <td><a href="editarProveedores.php?id=<?=$proveedor['id']?>" class="btn btn-warning">Editar</a></td>
-            <td><a href="borrarProveedores.php?id=<?=$proveedor['id']?>&req=delete" class="btn btn-danger">Borrar</a></td>
+            <td><?=$proveedor['prv_id']?></td>
+            <td><?=$proveedor['prv_nombre']?></td>
+            <td><?=$proveedor['prv_telefono']?></td>
+            <td><?=$proveedor['prv_ciudad']?></td>
+            <td><a href="editarProveedores.php?id=<?=$proveedor['prv_id']?>" class="btn btn-warning">Editar</a></td>
+            <td><a href="borrarProveedores.php?id=<?=$proveedor['prv_id']?>&req=delete" class="btn btn-danger">Borrar</a></td>
           </tr>
 
           <?php

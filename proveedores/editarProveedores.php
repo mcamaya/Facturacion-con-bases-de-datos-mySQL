@@ -98,7 +98,7 @@ if(isset($_POST['editar'])){
                   id="nombre"
                   name="nombre"
                   class="form-control"
-                  value="<?=$val['nombre']?>"
+                  value="<?=$val['prv_nombre']?>"
                  required
                 />
               </div>
@@ -110,7 +110,7 @@ if(isset($_POST['editar'])){
                   id="telefono"
                   name="telefono"
                   class="form-control"  
-                  value="<?=$val['telefono']?>"
+                  value="<?=$val['prv_telefono']?>"
                   required
                 />
               </div>
@@ -122,7 +122,7 @@ if(isset($_POST['editar'])){
                   id="ciudad"
                   name="ciudad"
                   class="form-control"
-                  value="<?=$val['ciudad']?>"
+                  value="<?=$val['prv_ciudad']?>"
                   required
                 />
               </div>
