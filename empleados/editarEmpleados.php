@@ -18,23 +18,12 @@ if (isset($_POST['editar'])){
     $data->setNombre($_POST['nombre']);
     $data->setCelular($_POST['celular']);
     $data->setDireccion($_POST['direccion']);
-    $data->setImagen($_FILES['imagen']['tmp_name']);
-
-    var_dump($_FILES['imagen']);
-
-/*     $imgBasename = $_FILES['imagen']['name'];
-    $imgUrlTemp = $_FILES['imagen']['tmp_name'];
-
-
-    $rutaASubir = "img_empleados/$imgBasename";
-
-    var_dump(move_uploaded_file($imgUrlTemp, $rutaASubir));
-    $data->setImagen($rutaASubir); */
+    $data->setImagen($_POST['imagen']);
 
     $data->update();
-    echo "<script>alert('Dato actualizado con éxito');</script>";
+    echo "<script>alert('Dato actualizado con éxito');document.location='empleados.php';</script>";
 }
-/* document.location='empleados.php'; */
+
 ?>
 
 <!DOCTYPE html>
@@ -108,7 +97,7 @@ if (isset($_POST['editar'])){
     <div class="parte-media">
         <h2 class="m-2">Empleado a Editar</h2>
       <div class="menuTabla contenedor2">
-      <form enctype="multipart/form-data" class="col d-flex flex-wrap" action=""  method="post">
+      <form class="col d-flex flex-wrap" action=""  method="post">
               <div class="mb-1 col-12">
                 <label for="nombre" class="form-label">Nombre</label>
                 <input 
@@ -146,14 +135,14 @@ if (isset($_POST['editar'])){
               </div>
 
               <div class="mb-1 col-12">
-                <label for="imagen" class="form-label">Imagen</label>
+                <label for="imagen" class="form-label">Imagen URL</label>
                 <input 
-                  type="file"
+                  type="text"
                   id="imagen"
                   name="imagen"
                   class="form-control"
                   value="<?=$val['emp_imagen']?>"
-                 
+                  required
                 />
               </div>
 
