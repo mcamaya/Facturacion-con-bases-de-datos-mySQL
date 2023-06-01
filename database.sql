@@ -78,11 +78,11 @@ VALUES (1, "Repuestos La 21", 60753564, "Girón"),
 ;
 
 --Este código fue hecho desde phpMyAdmin
-INSERT INTO `facturas` (`id`, `empleado_id`, `cliente_id`, `fecha`) VALUES ('1', '1', '3', '2023-05-28'), ('2', '3', '1', '2023-05-29');
+INSERT INTO `facturas` (`fct_id`, `fct_empleado_id`, `fct_cliente_id`, `fct_fecha`) VALUES ('1', '1', '3', '2023-05-28'), ('2', '3', '1', '2023-05-29');
 
 --Código por Cristian
 SELECT * FROM facturas INNER JOIN empleados ON facturas.empleado_id = empleados.id INNER JOIN clientes ON facturas.cliente_id = clientes.id;
 --modificado
-SELECT facturas.id, clientes.nombre, empleados.nombre, facturas.fecha FROM facturas 
-INNER JOIN empleados ON facturas.empleado_id = empleados.id 
-INNER JOIN clientes ON facturas.cliente_id = clientes.id;
+SELECT facturas.fct_id, clientes.clt_nombre, empleados.emp_nombre, facturas.fct_fecha FROM facturas 
+INNER JOIN empleados ON facturas.fct_empleado_id = empleados.emp_id 
+INNER JOIN clientes ON facturas.fct_cliente_id = clientes.clt_id;
