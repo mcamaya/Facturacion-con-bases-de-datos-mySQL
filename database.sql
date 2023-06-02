@@ -66,6 +66,16 @@ CREATE TABLE productos(
 
 );
 
+CREATE TABLE factura_detalle(
+    dtl_id_factura INT NOT NULL,
+    dtl_id_producto INT NOT NULL,
+    dtl_cantidad INT NOT NULL,
+    dtl_descuento INT,
+
+    FOREIGN KEY (dtl_id_factura) REFERENCES facturas(fct_id),
+    FOREIGN KEY (dtl_id_producto) REFERENCES productos(prd_id)
+);
+
 --Datos por defecto
 INSERT INTO categorias (ctg_id, ctg_nombre, ctg_descripcion, ctg_imagen) 
 VALUES (1, "Ropa Bebé", "Compra online Ropa para bebé de tus marcas favoritas, encuentra Ropa para bebé de diferentes modelos a precios increíbles.", "https://img.remediosdigitales.com/467890/portada/450_1000.jpg"),
@@ -105,3 +115,7 @@ INNER JOIN clientes ON facturas.fct_cliente_id = clientes.clt_id;
 SELECT productos.prd_id, productos.prd_nombre, categorias.ctg_nombre, productos.prd_precio, productos.prd_stock, proveedores.prv_nombre, productos.prd_unidades_pedidas, productos.prd_descontinuado FROM productos
 INNER JOIN categorias ON productos.prd_id_categoria = categorias.ctg_id
 INNER JOIN proveedores ON productos.prd_id_proveedor = proveedores.prv_id;
+
+SELECT facturas.fct_id, productos.prd_nombre, productos.prd_precio, factura_detalle.dtl_cantidad, factura_detalle.dtl_descuento FROM factura_detalle
+INNER JOIN facturas ON factura_detalle.dtl_id_factura = facturas.fct_id
+INNER JOIN productos ON factura_detalle.dtl_id_producto = productos.prd_id

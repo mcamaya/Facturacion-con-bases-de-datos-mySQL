@@ -53,6 +53,16 @@ class Factura extends Conectar{
         }
     }
 
+    public function obtainAll(){
+        try {
+            $stm = $this->dbCnx->prepare("SELECT * FROM facturas");
+            $stm->execute();
+            return $stm->fetchAll();
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
     public function obtainAll_innerJoin(){
         try {
             $stm = $this->dbCnx->prepare("

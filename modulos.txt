@@ -47,4 +47,4 @@ FACTURA DETALLE
 - Factura ID
 - Producto ID
 - Cantidad
-- Precio Venta
+- Descuento

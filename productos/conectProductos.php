@@ -84,6 +84,16 @@ class Producto extends Conectar{
         }
     }
 
+    public function obtainAll(){
+        try {
+            $stm = $this->dbCnx->prepare("SELECT * FROM productos");
+            $stm->execute();
+            return $stm->fetchAll();
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
     public function obtainAll_innerJoin(){
         try {
             $stm = $this->dbCnx->prepare("
