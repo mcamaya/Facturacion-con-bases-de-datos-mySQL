@@ -51,6 +51,21 @@ CREATE TABLE users(
     FOREIGN KEY (usr_id_empleado) REFERENCES empleados(emp_id)
 );
 
+CREATE TABLE productos(
+    prd_id INT PRIMARY KEY AUTO_INCREMENT,
+    prd_nombre VARCHAR(100) NOT NULL,
+    prd_id_categoria INT NOT NULL,
+    prd_precio INT NOT NULL,
+    prd_stock INT NOT NULL,
+    prd_id_proveedor INT NOT NULL,
+    prd_unidades_pedidas INT,
+    prd_descontinuado VARCHAR(10),
+
+    FOREIGN KEY (prd_id_categoria) REFERENCES categorias(ctg_id),
+    FOREIGN KEY (prd_id_proveedor) REFERENCES proveedores(prv_id)
+
+);
+
 --Datos por defecto
 INSERT INTO categorias (ctg_id, ctg_nombre, ctg_descripcion, ctg_imagen) 
 VALUES (1, "Ropa Bebé", "Compra online Ropa para bebé de tus marcas favoritas, encuentra Ropa para bebé de diferentes modelos a precios increíbles.", "https://img.remediosdigitales.com/467890/portada/450_1000.jpg"),
@@ -86,3 +101,7 @@ SELECT * FROM facturas INNER JOIN empleados ON facturas.empleado_id = empleados.
 SELECT facturas.fct_id, clientes.clt_nombre, empleados.emp_nombre, facturas.fct_fecha FROM facturas 
 INNER JOIN empleados ON facturas.fct_empleado_id = empleados.emp_id 
 INNER JOIN clientes ON facturas.fct_cliente_id = clientes.clt_id;
+
+SELECT productos.prd_id, productos.prd_nombre, categorias.ctg_nombre, productos.prd_precio, productos.prd_stock, proveedores.prv_nombre, productos.prd_unidades_pedidas, productos.prd_descontinuado FROM productos
+INNER JOIN categorias ON productos.prd_id_categoria = categorias.ctg_id
+INNER JOIN proveedores ON productos.prd_id_proveedor = proveedores.prv_id;

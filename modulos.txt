@@ -33,12 +33,12 @@ FACTURAS
 
 PRODUCTOS
 - Producto ID
+- Nombre Producto
 - Categoría ID
-- Proveedor ID
 - Precio Unitario
 - Stock
+- Proveedor ID
 - Unidades pedidas
-- Nombre Producto
 - Descontinuado
 
 
